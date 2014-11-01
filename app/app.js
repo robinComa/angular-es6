@@ -3,4 +3,5 @@ angular
     'ngAnimate',
     'angular-growl'
 ])
-.controller('TodoController', TodoController);
+    .controller('Es6Controller', Es6Controller)
+    .controller('TodoController', TodoController);
