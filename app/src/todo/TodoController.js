@@ -19,15 +19,15 @@ class TodoController {
      * All methods located on the body of the class will also be available to the named controller
      */
     addTodo() {
-        // notice `Template String` syntax
-        this.growl.addInfoMessage(`${this.newTodo}...added`, {ttl: 3000});
-        this.items.push(new TodoItem(this.newTodo, false));
+        let anItem = new TodoItem(this.newTodo);
+        this.growl.addInfoMessage(anItem.toString(), {ttl: 3000});
+        this.items.push(anItem);
         this.newTodo = '';
     }
 
     removeTodo(index) {
         let anItem = this.items.splice(index, 1);
-        this.growl.addWarnMessage(`${anItem[0].text}...removed`, {ttl: 3000});
+        this.growl.addWarnMessage(anItem.toString(), {ttl: 3000});
     }
 
     clearAll() {

@@ -10,44 +10,12 @@
         <link rel="stylesheet" href="../.tmp/style.css" />
     </head>
 
-    <body ng-controller="TodoController as tc">
+    <body>
 
         <div class="container">
             <div growl></div>
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">TodoMVC with ES6 and Animate.css</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form ng-submit="tc.addTodo()">
-                                <input type="text" ng-model="tc.newTodo" class="form-control" placeholder="New todo item goes here, then press Enter" focus>
-                            </form>
-                            <br>
-                            <div class="list-group">
-                                <div class="list-group-item todo-item" ng-repeat="item in tc.items" ng-class="{'todo-complete': item.complete}">
-                                    <span class="close" ng-click="tc.removeTodo($index)">&times;</span>
-                                    <label>
-                                        <input type="checkbox" ng-model="item.complete">
-                                        <span ng-bind="item.text">This is the content of the Todo</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-block btn-danger" ng-click="tc.clearAll()">Clear All Items</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" ng-controller="Es6Controller as es6">
-                <button class="btn" ng-click="es6.testDestructuring()">
-                    Destructuring : let {x, y} = {x:2, y:-5};
-                </button>
-                <button class="btn" ng-click="es6.testDefaultValue()">
-                    DefaultValue : testDefaultValue(x, y=1, z=0){...}; testDefaultValue();
-                </button>
-            </div>
+            <div class="row" ng-controller="TodoController as tc" ng-include="'src/todo/view.html'"></div>
+            <div class="row" ng-controller="Es6Controller as es6" ng-include="'src/es6/view.html'"></div>
         </div>
 
         <script src="bower_components/angular/angular.js"></script>
