@@ -8,24 +8,23 @@
         <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
         <link rel="stylesheet" href="bower_components/angular-growl/build/angular-growl.min.css" />
         <link rel="stylesheet" href="../.tmp/style.css" />
+
+        <script src="bower_components/traceur/traceur.js"></script>
     </head>
 
     <body>
 
         <div class="container">
             <div growl></div>
-            <div class="row" ng-controller="TodoController as tc" ng-include="'src/todo/view.html'"></div>
-            <div class="row" ng-controller="Es6Controller as es6" ng-include="'src/es6/view.html'"></div>
+            <div class="col-xs-4" ng-controller="Es6Controller as es6" ng-include="'src/es6/view.html'"></div>
+            <div class="col-xs-offset-2 col-xs-4" ng-controller="TodoController as tc" ng-include="'src/todo/view.html'"></div>
         </div>
 
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-growl/build/angular-growl.js"></script>
-        <script src="bower_components/traceur/traceur.js"></script>
 
         <script src="../.tmp/script.js"></script>
-
-        <script src="app.js"></script>
 
     </body>
 

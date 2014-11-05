@@ -4,10 +4,12 @@
     "dependencies": {},
     "devDependencies": {
         "gulp": "3.8.9",
-        "gulp-sourcemaps": "1.2.7",
+        "browserify": "6.2.0",
         "gulp-concat": "2.4.1",
-        "gulp-traceur": "0.13.0",
-        "gulp-watch": "1.1.0"
+        "es6ify": "1.5.1",
+        "gulp-watch": "1.1.0",
+        "vinyl-source-stream": "1.0.0",
+        "gulp-sass": "1.2.2"
     },
     "engines": {
         "node": ">=0.8.0"

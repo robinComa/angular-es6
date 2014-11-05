@@ -1,7 +1,80 @@
-<button class="btn" ng-click="es6.testDestructuring()">
-    Destructuring : let {x, y} = {x:2, y:-5};
-</button>
+<h1>Define block-local vars</h1>
+<pre>
+if(true){
+    let x = 20;
+    var y = 20;
+}
 
-<button class="btn" ng-click="es6.testDefaultValue()">
-    DefaultValue : testDefaultValue(x, y=1, z=0){...}; testDefaultValue();
-</button>
+console.log(`x : ${x}`);
+console.log(`y : ${y}`);
+</pre>
+<button class="btn btn-primary" ng-click="es6.testDefineBlockLocal()">Try it</button>
+
+<hr/>
+
+<h1>Destructuring</h1>
+<pre>
+let {x, y} = {x:2, y:-5};
+
+console.log(`x : ${x}`);
+console.log(`y : ${y}`);
+</pre>
+<button class="btn btn-primary" ng-click="es6.testDestructuring()">Try it</button>
+
+<hr/>
+
+<h1>Parameter default values</h1>
+<pre>
+testDefaultValue(x, y=1, z=0) {
+    console.log(`x : ${x}`);
+    console.log(`y : ${y}`);
+    console.log(`z : ${z}`);
+}
+</pre>
+<button class="btn btn-primary" ng-click="es6.testDefaultValue()">Try it</button>
+
+<hr/>
+
+<h1>Inheritance</h1>
+<pre>
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    toString() {
+        return `{Animal : ${this.name}}`;
+    }
+}
+class Dog extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    toString() {
+        return `{Dog : ${this.name}}`;
+    }
+}
+var animal = new Animal('An animal')
+var dog = new Dog('Bill');
+
+console.log(`animal : ${animal}`);
+console.log(`dog : ${dog}`);
+</pre>
+<button class="btn btn-primary" ng-click="es6.testInheritance()">Try it</button>
+
+<hr/>
+
+<h1>Promise</h1>
+<pre>
+var promise = new Promise(function(resolve, reject) {
+    setTimeout(function(){
+        resolve('Promise resolved!');
+    }, 1000);
+});
+
+promise.then(function(message){
+    console.log(`message : ${message}`);
+});
+</pre>
+<button class="btn btn-primary" ng-click="es6.testPromise()">Try it</button>
+
+<hr/>

@@ -1,7 +1,6 @@
-/**
- * Will be compiled into a function that can take the constructor parameters
- */
-class TodoController {
+import TodoItem from './TodoItem';
+
+module.exports =  class TodoController {
 
     /**
      * Here you can use inject all the usual stuff, $http, $route...

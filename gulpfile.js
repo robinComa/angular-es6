@@ -1,19 +1,31 @@
 var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
-var traceur = require('gulp-traceur');
+var browserify = require('browserify');
+var es6ify = require('es6ify');
 var concat = require('gulp-concat');
+var source = require('vinyl-source-stream');
+var sass = require('gulp-sass');
+
+gulp.task('sass', function () {
+    gulp.src('./app/style.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./.tmp'));
+});
 
 gulp.task('es6', function () {
-    return gulp.src('app/src/**/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(traceur({'block-binding': true}))
-        .pipe(concat('script.js'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('.tmp'));
+    return browserify([
+        './app/index.js'
+    ])
+    .transform(es6ify)
+    .bundle()
+    .pipe(source('script.js'))
+    .pipe(gulp.dest('./.tmp/'));
 });
 
 gulp.task('watch', function() {
-    return gulp.watch('app/src/**/*.js').on('change', function(file) {
+    gulp.watch('app/style.scss').on('change', function(file) {
+        gulp.run('sass');
+    });
+    gulp.watch('app/**/*.js').on('change', function(file) {
         gulp.run('es6');
     });
 });

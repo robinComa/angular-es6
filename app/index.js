@@ -1,3 +1,8 @@
+'use strict';
+
+import Es6Controller from './src/es6/Es6Controller';
+import TodoController from './src/todo/TodoController';
+
 angular
     .module('app', [
         'ngAnimate',
