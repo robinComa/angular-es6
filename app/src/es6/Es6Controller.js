@@ -1,3 +1,5 @@
+import MapReduce from './MapReduce';
+
 module.exports =  class Es6Controller {
 
     /**
@@ -65,5 +67,48 @@ module.exports =  class Es6Controller {
             alert(message);
             this.growl.addSuccessMessage(`message : ${message}`, {ttl: 3000});
         });
+    }
+
+    testPromiseAll(){
+
+        var map = function(text){
+            var words = {};
+            for (var word of text.split(' ')){
+                if(!words[word]){
+                    words[word] = 0;
+                }
+                words[word]++;
+            }
+            return words;
+        };
+
+        var reduce = function(context, value){
+            for(var word in value){
+                if(context[word]){
+                    context[word] += value[word];
+                }else{
+                    context[word] = value[word];
+                }
+            }
+            return context;
+        };
+
+        var mapReduce = new MapReduce([
+            'toto tutu titi',
+            'toto tata titi',
+            'tete tutu titi'
+        ], map, reduce);
+
+        var result = mapReduce.sync();
+
+        console.log(result);
+
+        mapReduce.async().then(function(result){
+            console.log(result);
+        });
+
+        //['toto tutu titi','toto tata titi','tete tutu titi'].stream().map(map).reduce(reduce);
+        //['toto tutu titi','toto tata titi','tete tutu titi'].parallelStream().map(map).reduce(reduce);
+
     }
 }
